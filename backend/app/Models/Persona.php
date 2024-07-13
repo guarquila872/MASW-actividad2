@@ -21,5 +21,4 @@ class Persona extends Model
         'grupo_sanguineo',
         'titulo'
     ];
-
 }

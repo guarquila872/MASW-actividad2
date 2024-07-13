@@ -17,3 +17,4 @@ class Medico extends Model
         'IdConsultorio',
     ];
 }
+

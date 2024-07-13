@@ -19,7 +19,6 @@ class PersonaController extends Controller
         ];
         return response()->json($data, 200);
     }
-
     public function Agregar(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -74,8 +73,6 @@ class PersonaController extends Controller
 
         return response()->json($data, 201);
     }
-
-
     public function BuscarId($id)
     {
         $persona = Persona::find($id);
@@ -95,7 +92,6 @@ class PersonaController extends Controller
 
         return response()->json($data, 200);
     }
-
     public function Eliminar($id)
     {
         $persona = Persona::find($id);
@@ -117,7 +113,6 @@ class PersonaController extends Controller
 
         return response()->json($data, 200);
     }
-
     public function Editar(Request $request, $id)
     {
         $persona = persona::find($id);
@@ -164,7 +159,7 @@ class PersonaController extends Controller
         $persona->titulo = $request->titulo;
 
         $persona->save();
-        
+
         $data = [
             'data' =>  $persona,
             'message' => 'Persona actualizado',
@@ -173,7 +168,6 @@ class PersonaController extends Controller
 
         return response()->json($data, 200);
     }
-
     public function EditarParcial(Request $request, $id)
     {
         $persona = persona::find($id);

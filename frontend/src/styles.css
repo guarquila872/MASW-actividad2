@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/Estilos/ColoresMatriz.css";
+@import "./app/Estilos/UbicacionComponentes.css";
+@import "./app/Estilos/Botones.css";
+.NombrePage{
+    display: grid;
+    place-items: center;
+    border-width: 2px;
+    border-bottom: 5px solid;
+    color: var(--color-secundario);
+    border-color: var(--color-primario);
+}

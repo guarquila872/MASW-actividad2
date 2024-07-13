@@ -20,6 +20,8 @@
     "@angular/router": "^18.0.0",
     "@bryntum/calendar": "npm:@bryntum/calendar-trial@^6.0.1",
     "@bryntum/calendar-angular": "^6.0.1",
+    "@bryntum/scheduler": "npm:@bryntum/scheduler-trial@^6.0.1",
+    "@bryntum/scheduler-angular": "^6.0.1",
     "primeng": "^17.18.4",
     "rxjs": "~7.8.0",
     "zone.js": "~0.14.3"

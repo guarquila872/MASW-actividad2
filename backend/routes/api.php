@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\PersonController;
-use App\Http\Controllers\API\ConsultorioController;
 use App\Http\Controllers\API\PersonaController;
 use App\Http\Controllers\API\MedicoController;
 use App\Http\Controllers\API\PacienteController;

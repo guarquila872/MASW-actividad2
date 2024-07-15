@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Personas } from '../../Models/Personas';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-personas',
@@ -11,8 +13,12 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class PersonasComponent implements OnInit {
 
-  ngOnInit(): void {}
-
+constructor(
+  private PersonasM:Personas
+){}
+  ngOnInit(): void {
+    this.ListarElementos();
+  }
   TituloFormulario: string = '';
   ParametrosDeBusqueda: Array<string> = [
     '',
@@ -47,8 +53,11 @@ export class PersonasComponent implements OnInit {
   // ****************************************** LISTAR ELEMENTOS *****************************************************************
   ListaPersonas: any[] = [];
 
-  ListarElementos(num: number) {
+  ListarElementos() {
     this.GetBusquedaPor('');
+    this.PersonasM.ListarElementos(0,0).pipe(map((data) =>{
+      console.log(data)
+    })).subscribe
   }
   FiltrarElemento() {
     const valor: any = this.txtBusqueda.value?.toString();

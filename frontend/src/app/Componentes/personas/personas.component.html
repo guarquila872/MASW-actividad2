@@ -68,8 +68,16 @@
             <section class="horizontal-center">
                 <div class="card-header" style="background-color: var(--color-formulario-primario);">
                     <div class="btn-group" role="group">
-                        <button class="btnHome" (click)="ListarElementos(1)"><i
+                        <button class="btnHome" (click)="ListarElementos()"><i
                                 class="fa-solid fa-house"></i></button>
+                                @if(TituloFormulario == ''){
+                                    <button class="btnAceptar" (click)="ListarElementos()"><i
+                                        class="fa-solid fa-house"></i></button>
+                                }
+                                @else{
+                                    <button class="btnEliminar" (click)="ListarElementos()"><i
+                                        class="fa-solid fa-house"></i></button>
+                                }
 
                     </div>
                     <div class="btn-group float-right" role="group">

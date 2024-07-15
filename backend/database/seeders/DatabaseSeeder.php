@@ -12,52 +12,37 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
-// {
-//     /**
-//      * Seed the application's database.
-//      */
-//     public function run(): void
-//     {
-//         // User::factory(10)->create();
-
-//         User::factory()->create([
-//             'name' => 'Test User',
-//             'email' => 'test@example.com',
-//         ]);
-//     }
-// }
-
 {    public function run(): void
     {
-        // Consultorio::factory()->create([
-        //     'Nombre' => 'Consultorio Medico A',
-        //     'Ruc' => '1234567890',
-        //     'NombreComercial' => 'ConsultMedA',
-        //     'Direccion' => '123 Calle Principal',
-        //     'Telefono' => '0987654321',
-        //     'PorcentajeIva' => 12.50,
-        //     'Logo' => 'https://via.placeholder.com/100',
-        //     'Correo' => 'contacto@consultmeda.com',
-        //     'DireccionMatriz' => '123 Calle Principal',
-        //     'FechaIn' => '2022-01-01',
-        //     'FechaUp' => '2023-01-01',
-        //     'Estado' => 'activo',
-        // ]);
+        Consultorio::factory()->create([
+            'Nombre' => 'Consultorio Medico A',
+            'Ruc' => '1234567890',
+            'NombreComercial' => 'ConsultMedA',
+            'Direccion' => '123 Calle Principal',
+            'Telefono' => '0987654321',
+            'PorcentajeIva' => 12.50,
+            'Logo' => 'https://via.placeholder.com/100',
+            'Correo' => 'contacto@consultmeda.com',
+            'DireccionMatriz' => '123 Calle Principal',
+            'FechaIn' => '2022-01-01',
+            'FechaUp' => '2023-01-01',
+            'Estado' => 'activo',
+        ]);
 
-        // Consultorio::factory()->create([
-        //     'Nombre' => 'Consultorio Medico B',
-        //     'Ruc' => '0987654321',
-        //     'NombreComercial' => 'ConsultMedB',
-        //     'Direccion' => '456 Calle Secundaria',
-        //     'Telefono' => '0123456789',
-        //     'PorcentajeIva' => 10.00,
-        //     'Logo' => 'https://via.placeholder.com/100',
-        //     'Correo' => 'contacto@consultmedb.com',
-        //     'DireccionMatriz' => '456 Calle Secundaria',
-        //     'FechaIn' => '2022-02-01',
-        //     'FechaUp' => '2023-02-01',
-        //     'Estado' => 'activo',
-        // ]);
+        Consultorio::factory()->create([
+            'Nombre' => 'Consultorio Medico B',
+            'Ruc' => '0987654321',
+            'NombreComercial' => 'ConsultMedB',
+            'Direccion' => '456 Calle Secundaria',
+            'Telefono' => '0123456789',
+            'PorcentajeIva' => 10.00,
+            'Logo' => 'https://via.placeholder.com/100',
+            'Correo' => 'contacto@consultmedb.com',
+            'DireccionMatriz' => '456 Calle Secundaria',
+            'FechaIn' => '2022-02-01',
+            'FechaUp' => '2023-02-01',
+            'Estado' => 'activo',
+        ]);
 
         // Consultorio::factory()->create([
         //     'Nombre' => 'Consultorio Medico C',
@@ -180,385 +165,385 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Persona::factory()->create([
-        //     'identificacion' => '1234567890',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Juan',
-        //     'apellidos' => 'Pérez',
-        //     'genero' => 'M',
-        //     'telefono' => '0987654321',
-        //     'direccion' => '123 Calle Principal',
-        //     'correo' => 'juan.perez@example.com',
-        //     'grupo_sanguineo' => 'O+',
-        //     'titulo' => 'Ingeniero',
+        //     'Identificacion' => '1234567890',
+        //     'TipoIdentificacion' => 'DNI',
+        //     'Nombres' => 'Juan',
+        //     'Apellidos' => 'Pérez',
+        //     'Genero' => 'M',
+        //     'Telefono' => '0987654321',
+        //     'Direccion' => '123 Calle Principal',
+        //     'Correo' => 'juan.perez@example.com',
+        //     'GrupoSanguineo' => 'O+',
+        //     'Titulo' => 'Ingeniero',
         // ]);
 
-        // Persona::factory()->create([
-        //     'identificacion' => '0987654321',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Ana',
-        //     'apellidos' => 'Gómez',
-        //     'genero' => 'F',
-        //     'telefono' => '0123456789',
-        //     'direccion' => '456 Calle Secundaria',
-        //     'correo' => 'ana.gomez@example.com',
-        //     'grupo_sanguineo' => 'A+',
-        //     'titulo' => 'Doctora',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '1111111111',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Carlos',
-        //     'apellidos' => 'Sánchez',
-        //     'genero' => 'M',
-        //     'telefono' => '1111111111',
-        //     'direccion' => '789 Calle Terciaria',
-        //     'correo' => 'carlos.sanchez@example.com',
-        //     'grupo_sanguineo' => 'B+',
-        //     'titulo' => 'Arquitecto',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '2222222222',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'María',
-        //     'apellidos' => 'Rodríguez',
-        //     'genero' => 'F',
-        //     'telefono' => '2222222222',
-        //     'direccion' => '123 Avenida Central',
-        //     'correo' => 'maria.rodriguez@example.com',
-        //     'grupo_sanguineo' => 'AB+',
-        //     'titulo' => 'Abogada',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '3333333333',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Luis',
-        //     'apellidos' => 'Fernández',
-        //     'genero' => 'M',
-        //     'telefono' => '3333333333',
-        //     'direccion' => '456 Avenida Secundaria',
-        //     'correo' => 'luis.fernandez@example.com',
-        //     'grupo_sanguineo' => 'O-',
-        //     'titulo' => 'Contador',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '4444444444',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Laura',
-        //     'apellidos' => 'Martínez',
-        //     'genero' => 'F',
-        //     'telefono' => '4444444444',
-        //     'direccion' => '789 Avenida Terciaria',
-        //     'correo' => 'laura.martinez@example.com',
-        //     'grupo_sanguineo' => 'A-',
-        //     'titulo' => 'Enfermera',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '5555555555',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'José',
-        //     'apellidos' => 'López',
-        //     'genero' => 'M',
-        //     'telefono' => '5555555555',
-        //     'direccion' => '123 Calle Cuarta',
-        //     'correo' => 'jose.lopez@example.com',
-        //     'grupo_sanguineo' => 'B-',
-        //     'titulo' => 'Profesor',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '6666666666',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Sara',
-        //     'apellidos' => 'García',
-        //     'genero' => 'F',
-        //     'telefono' => '6666666666',
-        //     'direccion' => '456 Calle Quinta',
-        //     'correo' => 'sara.garcia@example.com',
-        //     'grupo_sanguineo' => 'AB-',
-        //     'titulo' => 'Psicóloga',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '7777777777',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Miguel',
-        //     'apellidos' => 'Ramírez',
-        //     'genero' => 'M',
-        //     'telefono' => '7777777777',
-        //     'direccion' => '789 Calle Sexta',
-        //     'correo' => 'miguel.ramirez@example.com',
-        //     'grupo_sanguineo' => 'O+',
-        //     'titulo' => 'Ingeniero',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '8888888888',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Marta',
-        //     'apellidos' => 'Hernández',
-        //     'genero' => 'F',
-        //     'telefono' => '8888888888',
-        //     'direccion' => '123 Calle Séptima',
-        //     'correo' => 'marta.hernandez@example.com',
-        //     'grupo_sanguineo' => 'A+',
-        //     'titulo' => 'Doctora',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '9999999999',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Raúl',
-        //     'apellidos' => 'Jiménez',
-        //     'genero' => 'M',
-        //     'telefono' => '9999999999',
-        //     'direccion' => '456 Calle Octava',
-        //     'correo' => 'raul.jimenez@example.com',
-        //     'grupo_sanguineo' => 'B+',
-        //     'titulo' => 'Abogado',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '0000000001',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Elena',
-        //     'apellidos' => 'Ruiz',
-        //     'genero' => 'F',
-        //     'telefono' => '0000000001',
-        //     'direccion' => '789 Calle Novena',
-        //     'correo' => 'elena.ruiz@example.com',
-        //     'grupo_sanguineo' => 'AB+',
-        //     'titulo' => 'Arquitecta',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '0000000002',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Pedro',
-        //     'apellidos' => 'Torres',
-        //     'genero' => 'M',
-        //     'telefono' => '0000000002',
-        //     'direccion' => '123 Calle Décima',
-        //     'correo' => 'pedro.torres@example.com',
-        //     'grupo_sanguineo' => 'O-',
-        //     'titulo' => 'Profesor',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '0000000003',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Lucía',
-        //     'apellidos' => 'Vázquez',
-        //     'genero' => 'F',
-        //     'telefono' => '0000000003',
-        //     'direccion' => '456 Calle Onceava',
-        //     'correo' => 'lucia.vazquez@example.com',
-        //     'grupo_sanguineo' => 'A-',
-        //     'titulo' => 'Enfermera',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '0000000004',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Ricardo',
-        //     'apellidos' => 'Romero',
-        //     'genero' => 'M',
-        //     'telefono' => '0000000004',
-        //     'direccion' => '789 Calle Doceava',
-        //     'correo' => 'ricardo.romero@example.com',
-        //     'grupo_sanguineo' => 'B-',
-        //     'titulo' => 'Contador',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '0000000005',
-        //     'tipo_id' => 'PASAPORTE',
-        //     'nombres' => 'Patricia',
-        //     'apellidos' => 'Ortega',
-        //     'genero' => 'F',
-        //     'telefono' => '0000000005',
-        //     'direccion' => '123 Calle Treceava',
-        //     'correo' => 'patricia.ortega@example.com',
-        //     'grupo_sanguineo' => 'AB-',
-        //     'titulo' => 'Psicóloga',
-        // ]);
-
-        // Persona::factory()->create([
-        //     'identificacion' => '0000000006',
-        //     'tipo_id' => 'DNI',
-        //     'nombres' => 'Javier',
-        //     'apellidos' => 'Vega',
-        //     'genero' => 'M',
-        //     'telefono' => '0000000006',
-        //     'direccion' => '456 Calle Catorceava',
-        //     'correo' => 'javier.vega@example.com',
-        //     'grupo_sanguineo' => 'O+',
-        //     'titulo' => 'Ingeniero',
-        // ]);
-
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Cardiología',
-        //     'Subespecialidad' => 'Cardiología Intervencionista',
-        //     'NumeroCarnet' => 'C123456',
-        //     'IdPersona' => 1,
-        //     'IdConsultorio' => 1,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Dermatología',
-        //     'Subespecialidad' => 'Dermatopatología',
-        //     'NumeroCarnet' => 'D123456',
-        //     'IdPersona' => 2,
-        //     'IdConsultorio' => 2,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Neurología',
-        //     'Subespecialidad' => 'Neurofisiología',
-        //     'NumeroCarnet' => 'N123456',
-        //     'IdPersona' => 3,
-        //     'IdConsultorio' => 3,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Pediatría',
-        //     'Subespecialidad' => 'Neonatología',
-        //     'NumeroCarnet' => 'P123456',
-        //     'IdPersona' => 4,
-        //     'IdConsultorio' => 4,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Oftalmología',
-        //     'Subespecialidad' => 'Oftalmología Pediátrica',
-        //     'NumeroCarnet' => 'O123456',
-        //     'IdPersona' => 5,
-        //     'IdConsultorio' => 5,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Ginecología',
-        //     'Subespecialidad' => 'Ginecología Oncológica',
-        //     'NumeroCarnet' => 'G123456',
-        //     'IdPersona' => 6,
-        //     'IdConsultorio' => 6,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Urología',
-        //     'Subespecialidad' => 'Urología Pediátrica',
-        //     'NumeroCarnet' => 'U123456',
-        //     'IdPersona' => 7,
-        //     'IdConsultorio' => 7,
-        // ]);
-
-        // Medico::factory()->create([
-        //     'Especialidad' => 'Endocrinología',
-        //     'Subespecialidad' => 'Endocrinología Pediátrica',
-        //     'NumeroCarnet' => 'E123456',
-        //     'IdPersona' => 8,
-        //     'IdConsultorio' => 8,
-        // ]);
-
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP001',
-        //     'IdPersona' => 1,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP002',
-        //     'IdPersona' => 2,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP003',
-        //     'IdPersona' => 3,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP004',
-        //     'IdPersona' => 4,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP005',
-        //     'IdPersona' => 5,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP006',
-        //     'IdPersona' => 6,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP007',
-        //     'IdPersona' => 7,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP008',
-        //     'IdPersona' => 8,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP009',
-        //     'IdPersona' => 9,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP010',
-        //     'IdPersona' => 10,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP011',
-        //     'IdPersona' => 11,
-        // ]);
-        
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP012',
-        //     'IdPersona' => 12,
-        // ]);
-
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP012',
-        //     'IdPersona' => 12,
-        // ]);
-
-        // Paciente::factory()->create([
-        //     'NumeroExpediente' => 'EXP012',
-        //     'IdPersona' => 12,
-        // ]);
-
-        Horarioatencion::factory()->create([
-            'Nombre' => 'Diario',
-            'HoraInicio' => '07:30',
-            'HoraFin' => '05:30',
-            'HoraInicioReceso' => '12:00',
-            'HoraFinReceso' => '13:30',
+        Persona::factory()->create([
+            'Identificacion' => '0987654321',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Ana',
+            'Apellidos' => 'Gómez',
+            'Genero' => 'F',
+            'Telefono' => '0123456789',
+            'Direccion' => '456 Calle Secundaria',
+            'Correo' => 'ana.gomez@example.com',
+            'GrupoSanguineo' => 'A+',
+            'Titulo' => 'Doctora',
         ]);
 
-        Horarioatencion::factory()->create([
-            'Nombre' => 'Medio día',
-            'HoraInicio' => '07:30',
-            'HoraFin' => '12:30',
-            'HoraInicioReceso' => '00:00',
-            'HoraFinReceso' => '00:00',
+        Persona::factory()->create([
+            'Identificacion' => '1111111111',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Carlos',
+            'Apellidos' => 'Sánchez',
+            'Genero' => 'M',
+            'Telefono' => '1111111111',
+            'Direccion' => '789 Calle Terciaria',
+            'Correo' => 'carlos.sanchez@example.com',
+            'GrupoSanguineo' => 'B+',
+            'Titulo' => 'Arquitecto',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '2222222222',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'María',
+            'Apellidos' => 'Rodríguez',
+            'Genero' => 'F',
+            'Telefono' => '2222222222',
+            'Direccion' => '123 Avenida Central',
+            'Correo' => 'maria.rodriguez@example.com',
+            'GrupoSanguineo' => 'AB+',
+            'Titulo' => 'Abogada',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '3333333333',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Luis',
+            'Apellidos' => 'Fernández',
+            'Genero' => 'M',
+            'Telefono' => '3333333333',
+            'Direccion' => '456 Avenida Secundaria',
+            'Correo' => 'luis.fernandez@example.com',
+            'GrupoSanguineo' => 'O-',
+            'Titulo' => 'Contador',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '4444444444',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Laura',
+            'Apellidos' => 'Martínez',
+            'Genero' => 'F',
+            'Telefono' => '4444444444',
+            'Direccion' => '789 Avenida Terciaria',
+            'Correo' => 'laura.martinez@example.com',
+            'GrupoSanguineo' => 'A-',
+            'Titulo' => 'Enfermera',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '5555555555',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'José',
+            'Apellidos' => 'López',
+            'Genero' => 'M',
+            'Telefono' => '5555555555',
+            'Direccion' => '123 Calle Cuarta',
+            'Correo' => 'jose.lopez@example.com',
+            'GrupoSanguineo' => 'B-',
+            'Titulo' => 'Profesor',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '6666666666',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Sara',
+            'Apellidos' => 'García',
+            'Genero' => 'F',
+            'Telefono' => '6666666666',
+            'Direccion' => '456 Calle Quinta',
+            'Correo' => 'sara.garcia@example.com',
+            'GrupoSanguineo' => 'AB-',
+            'Titulo' => 'Psicóloga',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '7777777777',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Miguel',
+            'Apellidos' => 'Ramírez',
+            'Genero' => 'M',
+            'Telefono' => '7777777777',
+            'Direccion' => '789 Calle Sexta',
+            'Correo' => 'miguel.ramirez@example.com',
+            'GrupoSanguineo' => 'O+',
+            'Titulo' => 'Ingeniero',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '8888888888',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Marta',
+            'Apellidos' => 'Hernández',
+            'Genero' => 'F',
+            'Telefono' => '8888888888',
+            'Direccion' => '123 Calle Séptima',
+            'Correo' => 'marta.hernandez@example.com',
+            'GrupoSanguineo' => 'A+',
+            'Titulo' => 'Doctora',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '9999999999',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Raúl',
+            'Apellidos' => 'Jiménez',
+            'Genero' => 'M',
+            'Telefono' => '9999999999',
+            'Direccion' => '456 Calle Octava',
+            'Correo' => 'raul.jimenez@example.com',
+            'GrupoSanguineo' => 'B+',
+            'Titulo' => 'Abogado',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '0000000001',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Elena',
+            'Apellidos' => 'Ruiz',
+            'Genero' => 'F',
+            'Telefono' => '0000000001',
+            'Direccion' => '789 Calle Novena',
+            'Correo' => 'elena.ruiz@example.com',
+            'GrupoSanguineo' => 'AB+',
+            'Titulo' => 'Arquitecta',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '0000000002',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Pedro',
+            'Apellidos' => 'Torres',
+            'Genero' => 'M',
+            'Telefono' => '0000000002',
+            'Direccion' => '123 Calle Décima',
+            'Correo' => 'pedro.torres@example.com',
+            'GrupoSanguineo' => 'O-',
+            'Titulo' => 'Profesor',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '0000000003',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Lucía',
+            'Apellidos' => 'Vázquez',
+            'Genero' => 'F',
+            'Telefono' => '0000000003',
+            'Direccion' => '456 Calle Onceava',
+            'Correo' => 'lucia.vazquez@example.com',
+            'GrupoSanguineo' => 'A-',
+            'Titulo' => 'Enfermera',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '0000000004',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Ricardo',
+            'Apellidos' => 'Romero',
+            'Genero' => 'M',
+            'Telefono' => '0000000004',
+            'Direccion' => '789 Calle Doceava',
+            'Correo' => 'ricardo.romero@example.com',
+            'GrupoSanguineo' => 'B-',
+            'Titulo' => 'Contador',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '0000000005',
+            'TipoIdentificacion' => 'PAS',
+            'Nombres' => 'Patricia',
+            'Apellidos' => 'Ortega',
+            'Genero' => 'F',
+            'Telefono' => '0000000005',
+            'Direccion' => '123 Calle Treceava',
+            'Correo' => 'patricia.ortega@example.com',
+            'GrupoSanguineo' => 'AB-',
+            'Titulo' => 'Psicóloga',
+        ]);
+
+        Persona::factory()->create([
+            'Identificacion' => '0000000006',
+            'TipoIdentificacion' => 'DNI',
+            'Nombres' => 'Javier',
+            'Apellidos' => 'Vega',
+            'Genero' => 'M',
+            'Telefono' => '0000000006',
+            'Direccion' => '456 Calle Catorceava',
+            'Correo' => 'javier.vega@example.com',
+            'GrupoSanguineo' => 'O+',
+            'Titulo' => 'Ingeniero',
         ]);
 
 
-        Horarioatencion::factory()->create([
-            'Nombre' => 'Feriado Laborable',
-            'HoraInicio' => '09:30',
-            'HoraFin' => '13:00',
-            'HoraInicioReceso' => '00:00',
-            'HoraFinReceso' => '00:00',
+        Medico::factory()->create([
+            'Especialidad' => 'Cardiología',
+            'Subespecialidad' => 'Cardiología Intervencionista',
+            'NumeroCarnet' => 'C123456',
+            'IdPersona' => 1,
+            'IdConsultorio' => 1,
         ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Dermatología',
+            'Subespecialidad' => 'Dermatopatología',
+            'NumeroCarnet' => 'D123456',
+            'IdPersona' => 2,
+            'IdConsultorio' => 2,
+        ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Neurología',
+            'Subespecialidad' => 'Neurofisiología',
+            'NumeroCarnet' => 'N123456',
+            'IdPersona' => 3,
+            'IdConsultorio' => 3,
+        ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Pediatría',
+            'Subespecialidad' => 'Neonatología',
+            'NumeroCarnet' => 'P123456',
+            'IdPersona' => 4,
+            'IdConsultorio' => 4,
+        ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Oftalmología',
+            'Subespecialidad' => 'Oftalmología Pediátrica',
+            'NumeroCarnet' => 'O123456',
+            'IdPersona' => 5,
+            'IdConsultorio' => 5,
+        ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Ginecología',
+            'Subespecialidad' => 'Ginecología Oncológica',
+            'NumeroCarnet' => 'G123456',
+            'IdPersona' => 6,
+            'IdConsultorio' => 6,
+        ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Urología',
+            'Subespecialidad' => 'Urología Pediátrica',
+            'NumeroCarnet' => 'U123456',
+            'IdPersona' => 7,
+            'IdConsultorio' => 7,
+        ]);
+
+        Medico::factory()->create([
+            'Especialidad' => 'Endocrinología',
+            'Subespecialidad' => 'Endocrinología Pediátrica',
+            'NumeroCarnet' => 'E123456',
+            'IdPersona' => 8,
+            'IdConsultorio' => 8,
+        ]);
+
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP001',
+            'IdPersona' => 1,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP002',
+            'IdPersona' => 2,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP003',
+            'IdPersona' => 3,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP004',
+            'IdPersona' => 4,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP005',
+            'IdPersona' => 5,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP006',
+            'IdPersona' => 6,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP007',
+            'IdPersona' => 7,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP008',
+            'IdPersona' => 8,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP009',
+            'IdPersona' => 9,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP010',
+            'IdPersona' => 10,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP011',
+            'IdPersona' => 11,
+        ]);
+        
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP012',
+            'IdPersona' => 12,
+        ]);
+
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP012',
+            'IdPersona' => 12,
+        ]);
+
+        Paciente::factory()->create([
+            'NumeroExpediente' => 'EXP012',
+            'IdPersona' => 12,
+        ]);
+
+        // Horarioatencion::factory()->create([
+        //     'Nombre' => 'Diario',
+        //     'HoraInicio' => '07:30',
+        //     'HoraFin' => '05:30',
+        //     'HoraInicioReceso' => '12:00',
+        //     'HoraFinReceso' => '13:30',
+        // ]);
+
+        // Horarioatencion::factory()->create([
+        //     'Nombre' => 'Medio día',
+        //     'HoraInicio' => '07:30',
+        //     'HoraFin' => '12:30',
+        //     'HoraInicioReceso' => '00:00',
+        //     'HoraFinReceso' => '00:00',
+        // ]);
+
+
+        // Horarioatencion::factory()->create([
+        //     'Nombre' => 'Feriado Laborable',
+        //     'HoraInicio' => '09:30',
+        //     'HoraFin' => '13:00',
+        //     'HoraInicioReceso' => '00:00',
+        //     'HoraFinReceso' => '00:00',
+        // ]);
         
     }
 }

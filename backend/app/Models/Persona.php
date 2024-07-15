@@ -11,14 +11,14 @@ class Persona extends Model
     protected $table = 'persona';
     protected $fillable = [
         'identificacion',
-        'tipo_id',
-        'nombres',
-        'apellidos',
-        'genero',
-        'telefono',
-        'direccion',
-        'correo',
-        'grupo_sanguineo',
-        'titulo'
+        'TipoIdentificacion',
+        'Nombres',
+        'Apellidos',
+        'Genero',
+        'Telefono',
+        'Direccion',
+        'Correo',
+        'GrupoSanguineo',
+        'Titulo'
     ];
 }

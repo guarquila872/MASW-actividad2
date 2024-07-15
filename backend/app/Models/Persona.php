@@ -10,16 +10,18 @@ class Persona extends Model
     use HasFactory;
     protected $table = 'persona';
     protected $fillable = [
-        'identificacion',
-        'tipo_id',
-        'nombres',
-        'apellidos',
-        'genero',
-        'telefono',
-        'direccion',
-        'correo',
-        'grupo_sanguineo',
-        'titulo'
+        'Identificacion',
+        'Nombres',
+        'Apellidos',
+        'TipoIdentificacion',
+        'Genero',
+        'Direccion',
+        'Telefono',
+        'Correo',
+        'Titulo',
+        'FechaNacimiento',
+        'Foto',
+        'GrupoSanguineo',
+        'Estado',
     ];
-
 }

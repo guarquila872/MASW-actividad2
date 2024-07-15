@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('Foto');
             $table->string('GrupoSanguineo');
             $table->string('Estado');
-            $table->timestamps();        
+            $table->timestamps();
 
         });
     }

@@ -22,16 +22,23 @@ class PersonaController extends Controller
     public function Agregar(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'identificacion' => 'required',
-            'tipo_id' => 'required',
-            'nombres' => 'required',
-            'apellidos' => 'required',
-            'genero' => 'required',
-            'telefono' => 'required',
-            'direccion' => 'required',
-            'correo' => 'required|email',
-            'grupo_sanguineo' => 'required',
-            'titulo' => 'required',
+            'IdPersona' => 'required',
+            'TipoIdPersona' => 'required',
+            'Nombres' => 'required',
+            'Apellidos' => 'required',
+            'Genero' => 'required',
+            'Telefono' => 'required',
+            'Direccion' => 'required',
+            'Correo' => 'required|email',
+            'GrupoSanguineo' => 'required',
+            'Titulo' => 'required',
+            'FechaNacimiento' => 'required',
+            'Foto' => 'required',
+            'Estado' => 'required',
+           
+
+
+
         ]);
 
         if ($validator->fails()) {
@@ -44,22 +51,25 @@ class PersonaController extends Controller
         }
 
         $persona = Persona::create([
-            'identificacion' => $request->identificacion,
-            'tipo_id' => $request->tipo_id,
-            'nombres' => $request->nombres,
-            'apellidos' => $request->apellidos,
-            'genero' => $request->genero,
-            'telefono' => $request->telefono,
-            'direccion' => $request->direccion,
-            'correo' => $request->correo,
-            'grupo_sanguineo' => $request->grupo_sanguineo,
-            'titulo' => $request->titulo,
+            'IdPersona' => $request->IdPersona,
+            'TipoIdPersona' => $request->TipoIdPersona,
+            'Nombres' => $request->Nombres,
+            'Apellidos' => $request->Apellidos,
+            'Genero' => $request->Genero,
+            'Telefono' => $request->Telefono,
+            'Direccion' => $request->Direccion,
+            'Correo' => $request->Correo,
+            'GrupoSanguineo' => $request->GrupoSanguineo,
+            'Titulo' => $request->Titulo,
+            'FechaNacimiento' => $request->FechaNacimiento,
+            'Foto' => $request->Foto,
+            'Estado' => $request->Estado,
         ]);
 
         if (!$persona) {
             $data = [
                 'data' =>  '',
-                'message' => 'Error al crear el estudiante',
+                'message' => 'Error al crear el Persona',
                 'exito' => 500
             ];
             return response()->json($data, 500);
@@ -126,16 +136,19 @@ class PersonaController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'identificacion' => 'required',
-            'tipo_id' => 'required',
-            'nombres' => 'required',
-            'apellidos' => 'required',
-            'genero' => 'required',
-            'telefono' => 'required',
-            'direccion' => 'required',
-            'correo' => 'required|email',
-            'grupo_sanguineo' => 'required',
-            'titulo' => 'required',
+            'IdPersona' => 'required',
+            'TipoIdPersona' => 'required',
+            'Nombres' => 'required',
+            'Apellidos' => 'required',
+            'Genero' => 'required',
+            'Telefono' => 'required',
+            'Direccion' => 'required',
+            'Correo' => 'required|email',
+            'GrupoSanguineo' => 'required',
+            'Titulo' => 'required',
+            'FechaNacimiento' => 'required',
+            'Foto' => 'required',
+            'Estado' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -147,16 +160,19 @@ class PersonaController extends Controller
             return response()->json($data, 400);
         }
 
-        $persona->identificacion = $request->identificacion;
-        $persona->tipo_id = $request->tipo_id;
-        $persona->nombres = $request->nombres;
-        $persona->apellidos = $request->apellidos;
-        $persona->genero = $request->genero;
-        $persona->telefono = $request->telefono;
-        $persona->direccion = $request->direccion;
-        $persona->correo = $request->correo;
-        $persona->grupo_sanguineo = $request->grupo_sanguineo;
-        $persona->titulo = $request->titulo;
+        $persona->IdPersona = $request->IdPersona;
+        $persona->TipoIdPersona = $request->TipoIdPersona;
+        $persona->Nombres = $request->Nombres;
+        $persona->Apellidos = $request->Apellidos;
+        $persona->Genero = $request->Genero;
+        $persona->Telefono = $request->Telefono;
+        $persona->Direccion = $request->Direccion;
+        $persona->Correo = $request->Correo;
+        $persona->GrupoSanguineo = $request->GrupoSanguineo;
+        $persona->Titulo = $request->Titulo;
+        $persona->FechaNacimiento = $request->FechaNacimiento;
+        $persona->Foto = $request->Foto;
+        $persona->Estado = $request->Estado;
 
         $persona->save();
 
@@ -182,16 +198,19 @@ class PersonaController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'identificacion' => 'max:255',
-            'tipo_id' => 'max:255',
-            'nombres' => 'max:255',
-            'apellidos' => 'max:255',
-            'genero' => 'max:255',
-            'telefono' => 'max:255',
-            'direccion' => 'max:255',
-            'correo' => 'max:255|email',
-            'grupo_sanguineo' => 'in:O+,A+,A-',
-            'titulo' => 'max:255',
+            'IdPersona' => 'max:255',
+            'TipoIdPersona' => 'max:255',
+            'Nombres' => 'max:255',
+            'Apellidos' => 'max:255',
+            'Genero' => 'max:255',
+            'Telefono' => 'max:255',
+            'Direccion' => 'max:255',
+            'Correo' => 'max:255|email',
+            'GrupoSanguineo' => 'in:O+,A+,A-',
+            'Titulo' => 'max:255',
+            'FechaNacimiento' => 'max:255',
+            'Foto' => 'max:255',
+            'Estado' => 'max:255',
         ]);
 
         if ($validator->fails()) {
@@ -203,49 +222,58 @@ class PersonaController extends Controller
             return response()->json($data, 400);
         }
 
-        if ($request->has('identificacion')) {
-            $persona->identificacion = $request->identificacion;
+        if ($request->has('IdPersona')) {
+            $persona->IdPersona = $request->IdPersona;
         }
 
-        if ($request->has('tipo_id')) {
-            $persona->tipo_id = $request->tipo_id;
+        if ($request->has('TipoIdPersona')) {
+            $persona->TipoIdPersona = $request->TipoIdPersona;
         }
 
-        if ($request->has('nombres')) {
-            $persona->nombres = $request->nombres;
+        if ($request->has('Nombres')) {
+            $persona->Nombres = $request->Nombres;
         }
 
-        if ($request->has('apellidos')) {
-            $persona->apellidos = $request->apellidos;
+        if ($request->has('Apellidos')) {
+            $persona->Apellidos = $request->Apellidos;
         }
-        if ($request->has('genero')) {
-            $persona->genero = $request->genero;
-        }
-
-        if ($request->has('telefono')) {
-            $persona->telefono = $request->telefono;
+        if ($request->has('Genero')) {
+            $persona->Genero = $request->Genero;
         }
 
-        if ($request->has('direccion')) {
-            $persona->direccion = $request->direccion;
+        if ($request->has('Telefono')) {
+            $persona->Telefono = $request->Telefono;
         }
 
-        if ($request->has('correo')) {
-            $persona->correo = $request->correo;
+        if ($request->has('Direccion')) {
+            $persona->Direccion = $request->Direccion;
         }
 
-        if ($request->has('grupo_sanguineo')) {
-            $persona->grupo_sanguineo = $request->grupo_sanguineo;
+        if ($request->has('Correo')) {
+            $persona->Correo = $request->Correo;
         }
 
-        if ($request->has('titulo')) {
-            $persona->titulo = $request->titulo;
+        if ($request->has('GrupoSanguineo')) {
+            $persona->GrupoSanguineo = $request->GrupoSanguineo;
+        }
+
+        if ($request->has('Titulo')) {
+            $persona->Titulo = $request->Titulo;
+        }
+        if ($request->has('FechaNacimiento')) {
+            $persona->FechaNacimiento = $request->FechaNacimiento;
+        }
+        if ($request->has('Foto')) {
+            $persona->Foto = $request->Foto;
+        }
+        if ($request->has('Estado')) {
+            $persona->Estado = $request->Estado;
         }
 
         $persona->save();
 
         $data = [
-            'message' => 'Estudiante actualizado',
+            'message' => 'Persona actualizado',
             'persona' => $persona,
             'status' => 200
         ];

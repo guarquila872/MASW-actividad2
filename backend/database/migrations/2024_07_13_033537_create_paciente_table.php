@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('paciente', function (Blueprint $table) {
             $table->id('IdPaciente');
             $table->string('NumeroExpediente');
-            $table->string('IdPersona');
+            $table->unsignedBigInteger('IdPersona');
             $table->timestamps();
+
+            $table->foreign('IdPersona')->references('IdPersona')->on('persona')->onDelete('cascade');
         });
     }
 

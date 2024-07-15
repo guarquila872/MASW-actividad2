@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('Especialidad');
             $table->string('Subespecialidad');
             $table->string('NumeroCarnet');
-            $table->string('IdPersona');
-            $table->string('IdConsultorio');
-            $table->timestamps();
+            $table->unsignedBigInteger('IdPersona');
+            $table->unsignedBigInteger('IdConsultorio');
+            $table->timestamps();        
+            
+            $table->foreign('IdPersona')->references('IdPersona')->on('persona')->onDelete('cascade');
+            $table->foreign('IdConsultorio')->references('IdConsultorio')->on('consultorio')->onDelete('cascade');
         });
+        
     }
 
     /**

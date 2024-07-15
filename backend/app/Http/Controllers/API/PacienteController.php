@@ -17,7 +17,8 @@ class PacienteController
             'exito' => 200
         ];
         return response()->json($data, 200);
-    }    public function Agregar(Request $request)
+    }    
+    public function Agregar(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'NumeroExpediente' => 'required|numeric',
@@ -133,7 +134,9 @@ class PacienteController
         ];
 
         return response()->json($data, 200);
-    }    public function EditarParcial(Request $request, $id)
+    }    
+    
+    public function EditarParcial(Request $request, $id)
     {
         $Paciente = Paciente::find($id);
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('medico', function (Blueprint $table) {
-            $table->id('IdMedico');
+            $table->increments('IdMedico');
             $table->string('Especialidad');
             $table->string('Subespecialidad');
             $table->string('NumeroCarnet');
@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string('IdConsultorio');
             $table->timestamps();
             $table->softDeletes();
+            /** La definición de los campos que se usarán como claves foráneas */
+            $table->integer('IdPersona')->unsigned();
+            $table->integer('IdConsultorio')->unsigned();
+            /** La declaración de las claves foráneas en los campos necesarios. */
+            $table->foreign('IdPersona')->references('IdPersona')->on('persona');
+            $table->foreign('IdConsultorio')->references('IdConsultorio')->on('consultorio');
         });
     }
 

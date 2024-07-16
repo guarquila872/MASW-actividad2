@@ -1,11 +1,27 @@
 <?php
 
-use App\Http\Controllers\ConsultorioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\MedicoController;
-use App\Http\Controllers\PacienteController;
+
+use App\Http\Controllers\API\PersonController;
+use App\Http\Controllers\API\ConsultorioController;
+use App\Http\Controllers\API\PersonaController;
+use App\Http\Controllers\API\MedicoController;
+use App\Http\Controllers\API\PacienteController;
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
+
+Route::prefix('v1/persons')->group(function () {
+    Route::get('/',[ PersonController::class, 'get']);
+    Route::post('/',[ PersonController::class, 'create']);
+    Route::delete('/{id}',[ PersonController::class, 'delete']);
+    Route::get('/{id}',[ PersonController::class, 'getById']);
+    Route::put('/{id}',[ PersonController::class, 'update']);
+});
+
 
 Route::get('/Personas', [PersonaController::class, 'ListarPersonas']);
 Route::get('/Personas/{id}', [PersonaController::class, 'BuscarId']);

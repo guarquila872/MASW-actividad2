@@ -6,6 +6,7 @@ use App\Models\Consultorio;
 use App\Models\Medico;
 use App\Models\Paciente;
 use App\Models\Persona;
+use App\Models\Horarioatencion;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

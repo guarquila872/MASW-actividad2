@@ -15,11 +15,11 @@ class HorarioatencionFactory extends Factory
     public function definition()
     {
         return [
-            'Nombre' => $this->faker->company,
-            'HoraInicio' => $this->faker->company,
-            'HoraFin' => $this->faker->company,
-            'HoraInicioReceso' => $this->faker->company,
-            'HoraFinReceso' => $this->faker->company,
+            'Nombre' => $this->faker->randomElement(['Normal', 'Fin de Semana']),
+            'HoraInicio' => $this->faker->randomElement(['08:00','09:00']),
+            'HoraFin' => $this->faker->randomElement(['17:00','18:00']),
+            'HoraInicioReceso' => $this->faker->randomElement(['12:00','13:00']),
+            'HoraFinReceso' => $this->faker->randomElement(['13:00','14:00']),
         ];
     }
 }

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('horarioatencion', function (Blueprint $table) {
-            $table->increments('IdHorarioatencion');
+            $table->id('IdHorarioatencion');
             $table->string('Nombre');
             $table->string('HoraInicio');
             $table->string('HoraFin');

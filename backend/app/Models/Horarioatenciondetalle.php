@@ -11,9 +11,8 @@ class Horarioatenciondetalle extends Model
 
     protected $table = 'horarioatenciondetalle';
     protected $fillable = [
-        'IdHorarioatenciondet',
+        'IdHorarioatenciondetalle',
         'medico_id',
-        'agenda_id',
         'horarioatencion_id'
     ];
 }

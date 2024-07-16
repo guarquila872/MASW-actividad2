@@ -11,16 +11,16 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('horarioatenciondetalle', function (Blueprint $table) {
-            $table->increments('IdHorarioatenciondet');
+            $table->id('IdHorarioatenciondetalle');
             $table->timestamps();
             $table->softDeletes();
             /** La definición de los campos que se usarán como claves foráneas */
-            $table->integer('medico_id')->unsigned();
-            $table->integer('agenda_id')->unsigned();
-            $table->integer('horarioatencion_id')->unsigned();
+            $table->unsignedBigInteger('medico_id');
+            //$table->unsignedBigInteger('agenda_id');
+            $table->unsignedBigInteger('horarioatencion_id');
             /** La declaración de las claves foráneas en los campos necesarios. */
-            $table->foreign('medico_id')->references('IdMedico')->on('medico');
-            $table->foreign('agenda_id')->references('IdAgenda')->on('agenda');
+            $table->foreign('medico_id')->references('IdMedico')->on('medico')->onDelete('cascade');;
+           // $table->foreign('agenda_id')->references('IdAgenda')->on('agenda')->onDelete('cascade');;
             $table->foreign('horarioatencion_id')->references('IdHorarioatencion')->on('horarioatencion');
         });
     }

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Agenda extends Model
+class agendadetalle extends Model
 {
     use HasFactory;
-    protected $table = 'agenda';
+    protected $table = 'agendadetalle';
     protected $fillable = [
-        'Fecha',
-        'IdHorarioAtencionDetalle'
+        'AgendaId',
+        'HoraInicio',
+        'HoraFin',
+        'Estado'
     ];
 }

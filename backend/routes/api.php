@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\AgendaController;
+use App\Http\Controllers\API\HorarioatencionController;
+use App\Http\Controllers\API\HorarioatenciondetalleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +54,5 @@ Route::put('/Consultorio/{id}', [ConsultorioController::class, 'Editar']);
 Route::patch('/Consultorio/{id}', [ConsultorioController::class, 'EditarParcial']);
 Route::delete('/Consultorio/{id}',[ConsultorioController::class, 'Eliminar']);
 
+Route::get('/test/{medico_id}', [HorarioatencionDetalleController::class, 'detalles']);
+Route::post('/Agenda', [AgendaController::class, 'Agregar']);

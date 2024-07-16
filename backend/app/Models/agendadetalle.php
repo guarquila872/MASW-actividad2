@@ -10,7 +10,7 @@ class agendadetalle extends Model
     use HasFactory;
     protected $table = 'agendadetalle';
     protected $fillable = [
-        'AgendaId',
+        'agenda_id',
         'HoraInicio',
         'HoraFin',
         'Estado'

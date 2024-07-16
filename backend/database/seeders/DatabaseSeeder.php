@@ -48,39 +48,39 @@ class DatabaseSeeder extends Seeder
         ]);
         Agenda::factory()->create([
             'Fecha' => date("Y-m-d",strtotime("2024/07/15")),
-            'IdHorarioAtencionDetalle' => 1
+            'horarioatenciondetalle_id' => 1
         ]);
         Agenda::factory()->create([
             'Fecha' => date("Y-m-d",strtotime("2024/07/16")),
-            'IdHorarioAtencionDetalle' => 1
+            'horarioatenciondetalle_id' => 1
         ]);
         Agenda::factory()->create([
             'Fecha' => date("Y-m-d",strtotime("2024/07/17")),
-            'IdHorarioAtencionDetalle' => 1
+            'horarioatenciondetalle_id' => 1
         ]);
         Agenda::factory()->create([
             'Fecha' => date("Y-m-d",strtotime("2024/07/18")),
-            'IdHorarioAtencionDetalle' => 1
+            'horarioatenciondetalle_id' => 1
         ]);
         Agenda::factory()->create([
             'Fecha' => date("Y-m-d",strtotime("2024/07/19")),
-            'IdHorarioAtencionDetalle' => 1
+            'horarioatenciondetalle_id' => 1
         ]);
 
         agendadetalle::factory()->create([
-            'IdAgenda' => 1,
+            'agenda_id' => 1,
             'HoraInicio' => date("H:i",strtotime("07:30")),
             'HoraFin' => date("H:i",strtotime("8:00")),
             'Estado' => 'Disponible'
         ]);
         agendadetalle::factory()->create([
-            'IdAgenda' => 1,
+            'agenda_id' => 1,
             'HoraInicio' => date("H:i",strtotime("08:00")),
             'HoraFin' => date("H:i",strtotime("8:30")),
             'Estado' => 'Disponible'
         ]);
         agendadetalle::factory()->create([
-            'IdAgenda' => 1,
+            'agenda_id' => 1,
             'HoraInicio' => date("H:i",strtotime("08:30")),
             'HoraFin' => date("H:i",strtotime("09:00")),
             'Estado' => 'Disponible'

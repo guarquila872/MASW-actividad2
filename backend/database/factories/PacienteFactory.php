@@ -19,7 +19,7 @@ class PacienteFactory extends Factory
     {
         return [
             'NumeroExpediente' => $this->faker->unique()->numerify('EXP######'),
-            'IdPersona' => Persona::factory(),
+            'persona_id' => Persona::factory(),
         ];
     }
 }

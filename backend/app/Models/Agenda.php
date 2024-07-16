@@ -11,6 +11,6 @@ class Agenda extends Model
     protected $table = 'agenda';
     protected $fillable = [
         'Fecha',
-        'IdHorarioAtencionDetalle'
+        'horarioatenciondetalle_id'
     ];
 }

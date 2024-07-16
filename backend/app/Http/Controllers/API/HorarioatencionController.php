@@ -17,8 +17,8 @@ class HorarioatencionController
             'exito' => 200
         ];
         return response()->json($data, 200);
-    } 
-    
+    }
+
     public function Agregar(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -150,6 +150,12 @@ class HorarioatencionController
         ];
 
         return response()->json($data, 200);
+    }
+
+    public function tets()
+    {
+        $comments = Horarioatencion::find(1);
+        return $comments;
     }
 
 }

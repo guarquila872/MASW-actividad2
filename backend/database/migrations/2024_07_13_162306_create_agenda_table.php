@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('agenda', function (Blueprint $table) {
-            $table->id('IdAgenda');
+            $table->id();
             $table->date('Fecha');
-            $table->unsignedBigInteger('IdHorarioAtencionDetalle');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('IdHorarioAtencionDetalle')->references('IdHorarioatenciondetalle')
-                ->on('horarioatenciondetalle')->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Horarioatenciondetalle::class)->constrained("horarioatenciondetalle");
         });
     }
 

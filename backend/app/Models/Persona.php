@@ -24,4 +24,5 @@ class Persona extends Model
         'GrupoSanguineo',
         'Estado',
     ];
+    
 }

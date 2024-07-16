@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Horarioatencion extends Model
 {
@@ -18,4 +19,9 @@ class Horarioatencion extends Model
         'HoraInicioReceso',
         'HoraFinReceso'
     ];
+
+    public function detalles(): HasMany
+    {
+        return $this->hasMany(Horarioatenciondetalle::class);
+    }
 }

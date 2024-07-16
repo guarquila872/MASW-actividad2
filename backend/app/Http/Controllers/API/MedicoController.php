@@ -48,7 +48,7 @@ class MedicoController
         if (!$Medico) {
             $data = [
                 'data' =>  '',
-                'message' => 'Error al crear el estudiante',
+                'message' => 'Error al crear el médico.',
                 'exito' => 500
             ];
             return response()->json($data, 500);
@@ -68,7 +68,7 @@ class MedicoController
 
         if (!$Medico) {
             $data = [
-                'message' => 'Medico no encontrado',
+                'message' => 'Médico no encontrado',
                 'status' => 404
             ];
             return response()->json($data, 404);
@@ -87,7 +87,7 @@ class MedicoController
 
         if (!$Medico) {
             $data = [
-                'message' => 'Medico no encontrado',
+                'message' => 'Médico no encontrado',
                 'status' => 404
             ];
             return response()->json($data, 404);
@@ -96,19 +96,19 @@ class MedicoController
         $Medico->delete();
 
         $data = [
-            'message' => 'Medico eliminada',
+            'message' => 'Médico eliminada',
             'status' => 200
         ];
 
         return response()->json($data, 200);
     }
-    public function Editar(Request $request, $id)
+    public function Editar(Request $request, $IdMedico)
     {
-        $Medico = Medico::find($id);
+        $Medico = Medico::find($IdMedico);
 
         if (!$Medico) {
             $data = [
-                'message' => 'Medico no encontrado',
+                'message' => 'Médico no encontrado',
                 'status' => 404
             ];
             return response()->json($data, 404);
@@ -141,7 +141,7 @@ class MedicoController
 
         $data = [
             'data' =>  $Medico,
-            'message' => 'Medico actualizado',
+            'message' => 'Médico actualizado',
             'exito' => 200
         ];
 
@@ -200,7 +200,7 @@ class MedicoController
         $Medico->save();
 
         $data = [
-            'message' => 'Estudiante actualizado',
+            'message' => 'Médico actualizado',
             'Medico' => $Medico,
             'status' => 200
         ];

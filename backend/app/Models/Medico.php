@@ -16,4 +16,8 @@ class Medico extends Model
         'IdPersona',
         'IdConsultorio',
     ];
+
+    public function persona() {
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
 }

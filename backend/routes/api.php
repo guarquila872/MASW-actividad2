@@ -31,11 +31,11 @@ Route::patch('/Personas/{id}', [PersonaController::class, 'EditarParcial']);
 Route::delete('/Personas/{id}',[PersonaController::class, 'Eliminar']);
 
 Route::get('/Medicos', [MedicoController::class, 'ListarMedicos']);
-Route::get('/Medicos/{id}', [MedicoController::class, 'BuscarId']);
+Route::get('/Medicos/{IdMedico}', [MedicoController::class, 'BuscarId']);
 Route::post('/Medicos', [MedicoController::class, 'Agregar']);
-Route::put('/Medicos/{id}', [MedicoController::class, 'Editar']);
-Route::patch('/Medicos/{id}', [MedicoController::class, 'EditarParcial']);
-Route::delete('/Medicos/{id}',[MedicoController::class, 'Eliminar']);
+Route::put('/Medicos/{IdMedico}', [MedicoController::class, 'Editar']);
+Route::patch('/Medicos/{IdMedico}', [MedicoController::class, 'EditarParcial']);
+Route::delete('/Medicos/{IdMedico}',[MedicoController::class, 'Eliminar']);
 
 Route::get('/Pacientes', [PacienteController::class, 'ListarPacientes']);
 Route::get('/Pacientes/{id}', [PacienteController::class, 'BuscarId']);

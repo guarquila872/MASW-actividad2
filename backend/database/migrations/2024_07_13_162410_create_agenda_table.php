@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paciente', function (Blueprint $table) {
-            $table->id('IdPaciente');
-            $table->string('NumeroExpediente');
-            $table->string('IdPersona');
+        Schema::create('agenda', function (Blueprint $table) {
+            $table->id();
+            $table->string('Fecha');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignIdFor(\App\Models\Horarioatenciondetalle::class)->constrained("horarioatenciondetalle");
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('paciente');
+        Schema::dropIfExists('agenda');
     }
 };

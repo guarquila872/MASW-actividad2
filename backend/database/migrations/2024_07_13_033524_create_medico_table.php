@@ -12,18 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('medico', function (Blueprint $table) {
-            $table->id('IdMedico');
+            $table->id();
             $table->string('Especialidad');
             $table->string('Subespecialidad');
             $table->string('NumeroCarnet');
-            $table->unsignedBigInteger('IdPersona');
-            $table->unsignedBigInteger('IdConsultorio');
-            $table->timestamps();        
-            
-            $table->foreign('IdPersona')->references('IdPersona')->on('persona')->onDelete('cascade');
-            $table->foreign('IdConsultorio')->references('IdConsultorio')->on('consultorio')->onDelete('cascade');
+            $table->timestamps();
+            $table->foreignIdFor(\App\Models\Persona::class)->constrained("persona");
+            $table->foreignIdFor(\App\Models\Consultorio::class)->constrained("consultorio");
         });
-        
+
     }
 
     /**

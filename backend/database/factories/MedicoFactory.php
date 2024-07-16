@@ -22,8 +22,8 @@ class MedicoFactory extends Factory
             'Especialidad' => $this->faker->randomElement(['Cardiología', 'Dermatología', 'Neurología', 'Pediatría', 'Oftalmología']),
             'Subespecialidad' => $this->faker->randomElement(['Cardiología Intervencionista', 'Dermatopatología', 'Neurofisiología', 'Neonatología', 'Oftalmología Pediátrica']),
             'NumeroCarnet' => $this->faker->unique()->numerify('CARNET######'),
-            'IdPersona' => Persona::factory(),
-            'IdConsultorio' => Consultorio::factory(),
+            'persona_id' => Persona::factory(),
+            'consultorio_id' => Consultorio::factory(),
         ];
     }
 }

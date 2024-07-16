@@ -13,14 +13,13 @@ export class ApiService {
   url: string = 'http://127.0.0.1:8000/api/';
 
   GetPersonas(codigo: number, rango: number): Observable<any> {
-    console.log('tracks');
     let direccion = this.url + 'Personas';
     return this.http.get<any>(direccion).pipe(
       map((data) => {
         return data;
       }),
       catchError((error) => {
-        this.alerta.ErrorAlRecuperarElementosError('EncriptarAES', error);
+        this.alerta.ErrorAlRecuperarElementosError('Error al Conectar con el servidor', error);
         throw error;
       })
     );

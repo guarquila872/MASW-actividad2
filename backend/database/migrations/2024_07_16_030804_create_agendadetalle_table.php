@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paciente', function (Blueprint $table) {
+        Schema::create('agendadetalle', function (Blueprint $table) {
             $table->id();
-            $table->string('NumeroExpediente');
+            $table->time('HoraInicio');
+            $table->time('HoraFin');
+            $table->string('Estado');
             $table->timestamps();
-            $table->foreignIdFor(\App\Models\Persona::class)->constrained("persona");
+            $table->foreignIdFor(\App\Models\Agenda::class)->constrained("agenda");
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('paciente');
+        Schema::dropIfExists('agendadetalle');
     }
 };

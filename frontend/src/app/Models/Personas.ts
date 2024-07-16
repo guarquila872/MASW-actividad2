@@ -1,9 +1,10 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, inject, Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, map,of, Observable } from 'rxjs';
 import { ApiService } from '../servicios/api.service';
 import { Alertas } from '../Control/Alerts';
 import { Fechas } from '../Control/Fechas';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +15,15 @@ export class Personas {
     private alerta: Alertas,
     public fechas: Fechas,
   ) {}
-
+  
   ListarElementos(fraccion: number, rango: number) {
-    return this.api.GetPersonas(fraccion, rango).pipe(
+    return this.api.GetPersonas( fraccion,rango)
+    .pipe(
       map((tracks) => {
         let exito = tracks['exito'];
         let datos = tracks['data'];
         let mensaje = tracks['mensaje'];
-        if (exito == '1') {
+        if (exito == '200') {
           if (Array.isArray(datos) && datos.length > 0 || typeof datos === 'object' && datos !== null) {
             return datos;
           } else {
@@ -33,10 +35,9 @@ export class Personas {
           return [];
         }
       }),
-      catchError((error) => {
+      catchError((error:HttpErrorResponse) => {
         console.log(error.status);
         throw this.alerta.ErrorAlRecuperarElementos();
-        // throw new Error(error);
       })
     );
   }

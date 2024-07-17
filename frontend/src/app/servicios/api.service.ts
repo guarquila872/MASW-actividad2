@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseI } from './response.interface';
+import { PersonasI, ResponseI } from './response.interface';
 import { catchError, map, Observable } from 'rxjs';
 import { Alertas } from '../Control/Alerts';
 
@@ -15,6 +15,32 @@ export class ApiService {
   GetPersonas(codigo: number, rango: number): Observable<any> {
     let direccion = this.url + 'Personas';
     return this.http.get<any>(direccion).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        this.alerta.ErrorAlRecuperarElementosError('Error al Conectar con el servidor', error);
+        throw error;
+      })
+    );
+  }
+  PostPersonas(elemento: PersonasI): Observable<any> {
+    let direccion = this.url + 'Personas';
+    let jsonElemento = JSON.stringify(elemento);
+    return this.http.post<any>(direccion, elemento, { headers: { 'Content-Type': 'application/json' } }).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        this.alerta.ErrorAlRecuperarElementosError('Error al Conectar con el servidor', error);
+        throw error;
+      })
+    );
+  }
+  
+  PutPersonas(elemento:PersonasI): Observable<any> {
+    let direccion = this.url + 'Personas';
+    return this.http.put<any>(direccion,elemento).pipe(
       map((data) => {
         return data;
       }),

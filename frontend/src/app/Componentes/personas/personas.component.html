@@ -169,7 +169,7 @@
                             <div class="row">
                                 @for (control of formControls; track $index) {
                                 <div class="col-md-4 col-12">
-                                    @if (control.tipo != 'checkbox' && control.tipo != 'combobox') {
+                                    @if (control.name != 'id' && control.tipo != 'checkbox' && control.tipo != 'combobox') {
                                     <div class="form-group">
                                         <span><small>*</small>{{control.label}}</span>
                                         <input [type]="control.tipo == 'number'?'text':control.tipo"

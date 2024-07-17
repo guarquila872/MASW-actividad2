@@ -5,6 +5,7 @@ import { ApiService } from '../servicios/api.service';
 import { Alertas } from '../Control/Alerts';
 import { Fechas } from '../Control/Fechas';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PersonasI } from '../servicios/response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -69,45 +70,46 @@ export class Personas {
 
 
 
-//   GuardarElemento(elemento: CuentaCarteraI) {
-//     if (elemento.id_cuenta_tipo_cartera != 0) {
-//       return this.api.PutCuentaCartera(elemento).pipe(
-//         map((tracks) => {
-//           let exito = tracks['exito'];
-//           let mensaje = tracks['mensaje'];
-//           let datos = tracks['data'];
+  GuardarElemento(elemento: PersonasI) {
+    console.log(elemento);
+    if (elemento.id != 0) {
+      return this.api.PutPersonas(elemento).pipe(
+        map((tracks) => {
+          let exito = tracks['exito'];
+          let mensaje = tracks['mensaje'];
+          let datos = tracks['data'];
 
-//           if (exito == '1') {
-//             return exito;
-//           } else {
-//             return this.alerta.ErrorEnLaPeticion(mensaje);
-//           }
-//         }),
-//         catchError((error) => {
-//           console.log(error.status);
-//           throw this.alerta.ErrorEnLaOperacion();
-//           // throw new Error(error);
-//         })
-//       );
-//     } else {
-//       return this.api.PostCuentaCartera(elemento).pipe(
-//         map((tracks) => {
-//           let exito = tracks['exito'];
-//           let mensaje = tracks['mensaje'];
-//           let datos = tracks['data'];
+          if (exito == '201') {
+            return exito;
+          } else {
+            return this.alerta.ErrorEnLaPeticion(mensaje);
+          }
+        }),
+        catchError((error) => {
+          console.log(error.status);
+          throw this.alerta.ErrorEnLaPeticion(error.mensaje);
+          // throw new Error(error);
+        })
+      );
+    } else {
+      return this.api.PostPersonas(elemento).pipe(
+        map((tracks) => {
+          let exito = tracks['exito'];
+          let mensaje = tracks['mensaje'];
+          let datos = tracks['data'];
 
-//           if (exito == '1') {
-//             return exito;
-//           } else {
-//             return this.alerta.ErrorEnLaPeticion(mensaje);
-//           }
-//         }),
-//         catchError((error) => {
-//           console.log(error.status);
-//           throw this.alerta.ErrorEnLaOperacion();
-//           // throw new Error(error);
-//         })
-//       );
-//     }
-//   }
+          if (exito == '1') {
+            return exito;
+          } else {
+            return this.alerta.ErrorEnLaPeticion(mensaje);
+          }
+        }),
+        catchError((error) => {
+          console.log(error.status);
+          throw this.alerta.ErrorEnLaPeticion(error.mensaje);
+          // throw new Error(error);
+        })
+      );
+    }
+  }
 }

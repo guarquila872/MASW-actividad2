@@ -119,8 +119,10 @@ export class PersonasComponent implements OnInit {
   }
   EncerarComponentes() {
     this.TituloFormulario = '';
+    this.resetForm();
   }
-  PersonaForm: FormGroup;
+
+  PersonaForm!: FormGroup;
   formControls = [
     {
       tipo: 'combobox',
@@ -129,7 +131,10 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 12,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,12)],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 12),
+      ],
       optionList: [{ value: 'CI' }, { value: 'PAS' }, { value: 'RUC' }],
     },
     {
@@ -138,7 +143,11 @@ export class PersonasComponent implements OnInit {
       label: 'Identificacion',
       longitudMin: 7,
       longitudMax: 13,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(7,13), this.validar.VFN_SoloNumeros()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(7, 13),
+        this.validar.VFN_SoloNumeros(),
+      ],
     },
     {
       tipo: 'text',
@@ -146,7 +155,11 @@ export class PersonasComponent implements OnInit {
       label: 'Nombres',
       longitudMin: 1,
       longitudMax: 120,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,120), this.validar.VFN_AlfaNumerico()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 120),
+        this.validar.VFN_AlfaNumerico(),
+      ],
     },
     {
       tipo: 'text',
@@ -155,7 +168,11 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 120,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,120), this.validar.VFN_AlfaNumerico()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 120),
+        this.validar.VFN_AlfaNumerico(),
+      ],
     },
     {
       tipo: 'combobox',
@@ -164,7 +181,10 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 9,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,9)],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 9),
+      ],
       optionList: [{ value: 'Masculino' }, { value: 'Femenino' }],
     },
     {
@@ -174,7 +194,10 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 4,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,4)],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 4),
+      ],
       optionList: [
         { value: 'A+' },
         { value: 'A-' },
@@ -183,7 +206,7 @@ export class PersonasComponent implements OnInit {
         { value: 'AB+' },
         { value: 'AB-' },
         { value: 'O+' },
-        { value: 'O-' }
+        { value: 'O-' },
       ],
     },
     {
@@ -193,7 +216,11 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 250,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,250), this.validar.VFN_AlfaNumerico()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 250),
+        this.validar.VFN_AlfaNumerico(),
+      ],
     },
     {
       tipo: 'number',
@@ -202,7 +229,11 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 7,
       longitudMax: 14,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,14), this.validar.VFN_SoloNumeros()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 14),
+        this.validar.VFN_SoloNumeros(),
+      ],
     },
     {
       tipo: 'email',
@@ -211,7 +242,11 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 150,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,150), this.validar.VFN_Correo()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 150),
+        this.validar.VFN_Correo(),
+      ],
     },
     {
       tipo: 'text',
@@ -220,7 +255,11 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 15,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,15), this.validar.VFN_AlfaNumerico()],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 15),
+        this.validar.VFN_AlfaNumerico(),
+      ],
     },
     {
       tipo: 'date',
@@ -229,7 +268,10 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 8,
       longitudMax: 10,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(8,10)],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(8, 10),
+      ],
     },
     {
       tipo: 'text',
@@ -238,7 +280,10 @@ export class PersonasComponent implements OnInit {
 
       longitudMin: 1,
       longitudMax: 300,
-      validators: [Validators.required,this.validar.validarLongitudMinMax(1,300)],
+      validators: [
+        Validators.required,
+        this.validar.validarLongitudMinMax(1, 300),
+      ],
     },
     {
       tipo: 'checkbox',
@@ -251,14 +296,59 @@ export class PersonasComponent implements OnInit {
       value: true,
     },
   ];
+  resetForm() {
+    this.PersonaForm.reset({
+      TipoIdentificacion: '',
+      Identificacion: '',
+      Nombres: '',
+      Apellidos: '',
+      Genero: '',
+      GrupoSanguineo: '',
+      Direccion: '',
+      Telefono: '',
+      Correo: '',
+      Titulo: '',
+      FechaNacimiento: '',
+      Foto: '',
+      Estado: false,
+    });
+  }
 
-  GuardarElemento(elemento: any) {
-    elemento.Estado =  elemento.Estado == true?'Activo':'Inactivo';
+  GuardarElemento(elemento: any) {    
     console.log(elemento);
+    console.log(elemento.id);
+    elemento.id = elemento.id == undefined ? 0 : Number(elemento.id);
+    elemento.Estado = elemento.Estado == true ? 'Activo' : 'Inactivo';
+    console.log(elemento);
+    this.PersonasM.GuardarElemento(elemento)
+      .pipe(
+        map((x) => {
+          console.log(x);
+          if (x == 1) {
+            if (elemento.id != 0) {
+              // this.ListarElementos(1);
+              // this.CerrarAgregarEditarElemento();
+              // this.EncerarComponentes();
+              // this.TextoFiltro.patchValue('');
+              // this.alerta.RegistroActualizado();
+            } else {
+              // this.ListarElementos(1);
+              // this.CerrarAgregarEditarElemento();
+              // this.EncerarComponentes();
+              // this.TextoFiltro.patchValue('');
+              // this.alerta.RegistroAgregado();
+            }
+          } else {
+            // this.ActDesControles(0);
+            // this.ActDesControles(2);
+          }
+        })
+      )
+      .subscribe();
   }
 
   // ****************************************** PAGINACION *****************************************************************
-  
+
   ActualizaEstado(datos: any) {}
   CargarElemento(datos: any, tipo: number) {
     this.AgregarEditarElemento(tipo);

@@ -552,7 +552,7 @@ class DatabaseSeeder extends Seeder
             'HoraFinReceso' => '00:00',
         ]);
 
-        Usuario::create([
+        Usuario::factory()->create([
             'Usuario' => 'admin',
             'Clave' => Hash::make('password'), // contraseña
             'Estado' => 'Activo',

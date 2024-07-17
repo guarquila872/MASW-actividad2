@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('FechaUp')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignIdFor(\App\Models\Persona::class)->constrained("persona");            
+            $table->foreignIdFor(\App\Models\Persona::class)->constrained("persona");         
         });
     }
 

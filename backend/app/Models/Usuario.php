@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Usuario extends Authenticatable
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Usuario extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
     protected $table = 'usuario';
-    protected $primaryKey = 'IdUsuario';
-    public $timestamps = false;
 
     protected $fillable = [
         'Usuario',
@@ -20,20 +18,10 @@ class Usuario extends Authenticatable
         'Estado',
         'FechaIn',
         'FechaUp',
-        'IdPersona',
+        'persona_id',
     ];
 
-    protected $hidden = [
-        'Clave',
-    ];
-
-    protected $casts = [
-        'FechaIn' => 'date',
-        'FechaUp' => 'date',
-    ];
-
-    public function getAuthPassword()
-    {
-        return $this->Clave;
+    public function persona() {
+        return $this->belongsTo(Persona::class, 'persona_id');
     }
 }

@@ -22,7 +22,7 @@ class UsuarioFactory extends Factory
             'Clave' => static::$password ??= Hash::make('password'),
             'Estado' => $this->faker->randomElement(['Activo', 'Inactivo']),
             'FechaIn' => $this->faker->date(),
-            'IdPersona' => Persona::factory(),
+            'persona_id' => Persona::factory(),
         ];
     }
 }

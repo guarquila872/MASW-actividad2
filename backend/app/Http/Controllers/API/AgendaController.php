@@ -4,55 +4,66 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Agenda;
 use App\Models\agendadetalle;
-use App\Models\Medico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class AgendaController
 {
     public function Agregar(Request $request)
     {
-        /*$validator = Validator::make($request->all(), [
-            'Fecha' => 'required',
-            'horarioatenciondetalle_id' => 'required'
-        ]);
+        try {
+            DB::beginTransaction();
+            $validator = Validator::make($request->all(), [
+             'Fecha' => 'required',
+             'horarioatenciondetalle_id' => 'required'
+            ]);
 
-        if ($validator->fails()) {
-            $data = [
-                'data' =>  $validator->errors(),
-                'message' => 'Error en la validación de los datos',
-                'exito' => 400
-            ];
-            return response()->json($data, 400);
-        }
+             if ($validator->fails()) {
+                 $data = [
+                     'data' =>  $validator->errors(),
+                     'message' => 'Error en la validación de los datos',
+                     'exito' => 400
+                 ];
+                 return response()->json($data, 400);
+             }
 
-        $Agenda = Agenda::create([
-            'Fecha' => $request->Fecha,
-            'horarioatenciondetalle_id' => $request->horarioatenciondetalle_id
-        ]);
+             $Agenda = Agenda::create([
+                 'Fecha' => $request->Fecha,
+                 'horarioatenciondetalle_id' => $request->horarioatenciondetalle_id
+             ]);
 
-        if (!$Agenda) {
+             if (!$Agenda) {
+                 $data = [
+                     'data' =>  '',
+                     'message' => 'Error al crear la agenda',
+                     'exito' => 500
+                 ];
+                 return response()->json($data, 500);
+             }
+
+             $this->AgregarDetalle($Agenda->id,$request->horarioatenciondetalle_id);
+             $data = [
+                 'data' =>  $Agenda,
+                 'message' => '',
+                 'exito' => 201
+             ];
+            DB::commit();
+            return response()->json($data, 201);
+        } catch (Throwable $e) {
+            DB::rollBack();
             $data = [
                 'data' =>  '',
-                'message' => 'Error al crear la agenda',
+                'message' => 'Error al crear la agenda: '.$e->getMessage(),
                 'exito' => 500
             ];
             return response()->json($data, 500);
         }
 
-        $data = [
-            'data' =>  $Agenda,
-            'message' => '',
-            'exito' => 201
-        ];
-
-        return response()->json($data, 201);*/
-        return $this->AgregarDetalle(2);
     }
 
-    function AddPlayTime($times) {
-
+    function AgregarTiempo($times) {
         $all_seconds=0;
         foreach ($times as $time) {
 
@@ -62,12 +73,10 @@ class AgendaController
             //$all_seconds += $second;
 
         }
-
         $total_minutes = floor($all_seconds/60);
         $seconds = $all_seconds % 60;
         $hours = floor($total_minutes / 60);
         $minutes = $total_minutes % 60;
-
         // returns the time already formatted
         return sprintf('%02d:%02d', $hours, $minutes);
     }
@@ -82,7 +91,7 @@ class AgendaController
         $total_minutes = floor($total_segundos/60);
         return $total_minutes;
     }
-    public function AgregarDetalle($horarioatenciondetalle_id){
+    public function AgregarDetalle($agenda_id,$horarioatenciondetalle_id){
         $intervalo_tiempo = "0:30"; //tiempo en minutos
         $data = DB::table('horarioatenciondetalle')
             ->join('horarioatencion', 'horarioatenciondetalle.horarioatencion_id', '=', 'horarioatencion.id')
@@ -111,7 +120,7 @@ class AgendaController
             $times = array();
             $times[] = $horaInicio;
             $times[] = $intervalo_tiempo;
-            $horaInicio = $this->AddPlayTime($times);
+            $horaInicio = $this->AgregarTiempo($times);
             $auxIntervalo = $this->obtenMinutos($horaInicio);
             $item = $times[0].'-'.$horaInicio;
             array_push($citas,$item);
@@ -128,7 +137,7 @@ class AgendaController
                 $times = array();
                 $times[] = $horaInicio;
                 $times[] = $intervalo_tiempo;
-                $horaInicio = $this->AddPlayTime($times);
+                $horaInicio = $this->AgregarTiempo($times);
                 $auxIntervalo = $this->obtenMinutos($horaInicio);
                 $item = $times[0].'-'.$horaInicio;
                 array_push($citas,$item);
@@ -136,30 +145,14 @@ class AgendaController
             }
         }
 
-        $value = '';
         foreach ($citas as $cita){
             list($hora_inicio, $hora_fin) = explode('-', $cita);
             $Agenda = agendadetalle::create([
-                'agenda_id' => 1,
+                'agenda_id' => $agenda_id,
                 'HoraInicio' => date("H:i",strtotime($hora_inicio)),
                 'HoraFin' => date("H:i",strtotime($hora_fin)),
                 'Estado' => "Disponible",
             ]);
         }
-        return $value;
-        /**for ($i = $minutosInicio; $i < $minutosFin; $i+$auxIntervalo) {
-            $item = '';
-            $times = array();
-            $times[] = $horaInicio;
-            $times[] = $intervalo_tiempo;
-            $horaInicio = $this->AddPlayTime($times);
-            $auxIntervalo = $this->obtenMinutos($horaInicio);
-            $item = $times[0].'-'.$horaInicio;
-            array_push($citas,$item);
-        }*/
-       // return $citas;
-
-
-        //return $data;
     }
 }

@@ -54,5 +54,5 @@ Route::put('/Consultorio/{id}', [ConsultorioController::class, 'Editar']);
 Route::patch('/Consultorio/{id}', [ConsultorioController::class, 'EditarParcial']);
 Route::delete('/Consultorio/{id}',[ConsultorioController::class, 'Eliminar']);
 
-Route::get('/test/{medico_id}', [HorarioatencionDetalleController::class, 'detalles']);
+Route::get('/HorarioAtencionDetalle/{medico_id}', [HorarioatencionDetalleController::class, 'detalles']);
 Route::post('/Agenda', [AgendaController::class, 'Agregar']);

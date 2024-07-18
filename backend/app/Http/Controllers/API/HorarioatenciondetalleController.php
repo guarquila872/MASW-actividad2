@@ -31,7 +31,13 @@ class HorarioatenciondetalleController
                 'horarioatencion.Nombre','horarioatencion.HoraInicio','horarioatencion.HoraFin')
             ->where('medico_id', '=', $medico_id)
             ->get();
-        return $data;
+        $data = [
+            'data' => $data,
+            'mensaje' => 'Exito',
+            'exito' => 200
+        ];
+        return response()->json($data, 200);
+
     }
 
 }

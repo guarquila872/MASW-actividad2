@@ -1,25 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { map } from 'rxjs';
-import { ApiService } from '../../servicios/api.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Operaciones } from '../../Models/Operaciones';
 import { TipoDeTexto } from '../../Control/TipoDeTexto';
 import { Alertas } from '../../Control/Alerts';
-import { Operaciones } from '../../Models/Operaciones';
+import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-personas',
+  selector: 'app-medicos',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './personas.component.html',
-  styleUrl: './personas.component.css',
+  templateUrl: './medicos.component.html',
+  styleUrl: './medicos.component.css'
 })
-export class PersonasComponent implements OnInit {
+export class MedicosComponent   implements OnInit {
   constructor(
     private OperacionesM: Operaciones,
     public validar: TipoDeTexto,
@@ -39,11 +33,11 @@ export class PersonasComponent implements OnInit {
   TituloFormulario: string = '';
   ParametrosDeBusqueda: Array<string> = [
     '',
-    'Identificacion',
+    'Ruc',
     'Nombre Completo',
-    'Apellido Completo',
+    'Nombre Comercial Completo',
     'Nombre Incompleto',
-    'Apellido Incompleto',
+    'Nombre Comercial Incompleto',
     'Estado',
   ];
   ParametrosEstado: any[] = [
@@ -76,7 +70,7 @@ export class PersonasComponent implements OnInit {
     this.txtBusqueda.patchValue(this.txtBusqueda.value!.toUpperCase());
   }
   // ****************************************** LISTAR ELEMENTOS *****************************************************************
-  ListaPersonas: any[] = [];
+  ListaMedico: any[] = [];
 
   ListarElementos(num?: number) {
     if (num == 1) {
@@ -85,13 +79,13 @@ export class PersonasComponent implements OnInit {
     }
     this.GetBusquedaPor('');
     this.OperacionesM.ListarElementos(
-      'Personas/',
+      'Medicos/',
       this.FraccionDatos,
       this.RangoDatos
     )
       .pipe(
         map((datos) => {
-          this.ListaPersonas = datos;
+          this.ListaMedico = datos;
           this.FraccionarValores(0, datos, this.ConstanteFraccion);
         })
       )
@@ -104,7 +98,7 @@ export class PersonasComponent implements OnInit {
       tipo = 0;
       this.GetFiltrarElemento(valor, tipo);
     }
-    if (this.itemBusqueda.value === 'Identificacion') {
+    if (this.itemBusqueda.value === 'Ruc') {
       tipo = 1;
       this.GetFiltrarElemento(valor, tipo);
     }
@@ -116,22 +110,22 @@ export class PersonasComponent implements OnInit {
       tipo = 3;
       this.GetFiltrarElemento(valor, tipo);
     }
-    if (this.itemBusqueda.value === 'Apellido Completo') {
+    if (this.itemBusqueda.value === 'Nombre Comercial Completo') {
       tipo = 4;
       this.GetFiltrarElemento(valor, tipo);
     }
-    if (this.itemBusqueda.value === 'Apellido Incompleto') {
+    if (this.itemBusqueda.value === 'Nombre Comercial Incompleto') {
       tipo = 5;
       this.GetFiltrarElemento(valor, tipo);
     }
   }
 
   GetFiltrarElemento(valor: string, tipo: number) {
-    this.ListaPersonas = [];
-    this.OperacionesM.FiltrarElementos('PersonasFiltro/', tipo, valor)
+    this.ListaMedico = [];
+    this.OperacionesM.FiltrarElementos('MedicosFiltro/', tipo, valor)
       .pipe(
         map((datos) => {
-          this.ListaPersonas = datos;
+          this.ListaMedico = datos;
           this.FraccionarValores(0, datos, this.ConstanteFraccion);
         })
       )
@@ -349,7 +343,7 @@ export class PersonasComponent implements OnInit {
   GuardarElemento(elemento: any) {
     elemento.id = elemento.id == undefined ? 0 : Number(elemento.id);
     elemento.Estado = elemento.Estado == true ? 'Activo' : 'Inactivo';
-    this.OperacionesM.GuardarElemento('Personas', elemento)
+    this.OperacionesM.GuardarElemento('Medicos', elemento)
       .pipe(
         map((x) => {
           if (x == '200' || x == '201') {
@@ -396,7 +390,7 @@ export class PersonasComponent implements OnInit {
       id: elemento.id,
       Estado: elemento.Estado == 'Activo' ? 'Inactivo' : 'Activo',
     };
-    this.OperacionesM.EditarParcialElemento('Personas', edit)
+    this.OperacionesM.EditarParcialElemento('Medicos', edit)
       .pipe(
         map((x) => {
           if (x == '200' || x == '201') {
@@ -411,7 +405,7 @@ export class PersonasComponent implements OnInit {
   EliminarElemento(elemento: any) {
     this.alerta.EliminarRegistro().then((confirmado) => {
       if (confirmado) {
-        this.OperacionesM.EliminarElemento('Personas/', elemento.id)
+        this.OperacionesM.EliminarElemento('Medicos/', elemento.id)
           .pipe(
             map((x) => {
               if (x == '200' || x == '201') {

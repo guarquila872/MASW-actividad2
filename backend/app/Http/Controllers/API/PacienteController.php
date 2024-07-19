@@ -3,21 +3,45 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Paciente;
+use App\Models\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PacienteController
 {
-    public function ListarPacientes()
+    public function ListarPacientes($codigo, $rango)
     {
-        $Pacientes = Paciente::all();
-        $data = [
-            'data' => $Pacientes,
+        $q = Paciente::join('persona', 'paciente.persona_id', '=', 'persona.id')
+            ->select(
+                'paciente.id',
+                'paciente.NumeroExpediente',
+                'paciente.persona_id',
+                'persona.Identificacion',
+                'persona.Nombres',
+                'persona.Apellidos',
+                'persona.TipoIdentificacion',
+                'persona.Genero',
+                'persona.Direccion',
+                'persona.Telefono',
+                'persona.Correo',
+                'persona.Titulo',
+                'persona.FechaNacimiento',
+                'persona.Foto',
+                'persona.GrupoSanguineo',
+                'persona.Estado',
+            )
+            ->orderBy('id', 'desc')
+            ->skip($codigo)
+            ->take($rango)
+            ->get();
+
+            $data = [
+            'data' => $q,
             'message' => 'Exito',
             'exito' => 200
         ];
-        return response()->json($data, 200);
-    }    
+        return response()->json($data);
+    }
     public function Agregar(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -75,7 +99,7 @@ class PacienteController
 
         return response()->json($data, 200);
     }
-   public function Eliminar($id)
+    public function Eliminar($id)
     {
         $Paciente = Paciente::find($id);
 
@@ -126,7 +150,7 @@ class PacienteController
         $Paciente->IdPersona = $request->IdPersona;
 
         $Paciente->save();
-        
+
         $data = [
             'data' =>  $Paciente,
             'message' => 'Paciente actualizado',
@@ -134,8 +158,8 @@ class PacienteController
         ];
 
         return response()->json($data, 200);
-    }    
-    
+    }
+
     public function EditarParcial(Request $request, $id)
     {
         $Paciente = Paciente::find($id);

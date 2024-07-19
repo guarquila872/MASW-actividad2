@@ -9,14 +9,78 @@ use Illuminate\Support\Facades\Validator;
 
 class ConsultorioController extends Controller
 {
-    public function ListarConsultorio()
+    public function ListarConsultorios($codigo, $rango)
     {
-        $consultorios = Consultorio::all();
+        $q = Consultorio::where('Estado', 'Activo')
+            ->orderBy('id', 'desc')
+            ->skip($codigo)
+            ->take($rango == 0 ? 1000 : $rango)
+            ->get();
         $data = [
-            'data' => $consultorios,
-            'message' => 'Exito',
+            'data' => $q,
+            'mensaje' => 'Exito',
             'exito' => 200
         ];
+        return response()->json($data);
+    }
+    public function Filtrar($tipo, $valor)
+    {
+        $query = Consultorio::query();
+
+        if ($tipo == 0) {
+            $query->where('Estado', $valor);
+        } elseif ($tipo == 1) {
+            $query->where('Ruc', strtoupper($valor))
+                ->where('Estado', 'Activo');
+        } elseif ($tipo == 2) {
+            $query->where('Nombre', strtoupper($valor))
+                ->where('Estado', 'Activo');
+        } elseif ($tipo == 3) {
+            $query->where('Nombre', 'like', '%' . strtoupper($valor) . '%')
+                ->where('Estado', 'Activo');
+        } elseif ($tipo == 4) {
+            $query->where('NombreComercial', strtoupper($valor))
+                ->where('Estado', 'Activo');
+        } elseif ($tipo == 5) {
+            $query->where('NombreComercial', 'like', '%' . strtoupper($valor) . '%')
+                ->where('Estado', 'Activo');
+        } else {
+            $data = [
+                'data' => [],
+                'exito' => 400,
+                'mensaje' => 'Tipo no válido'
+            ];
+            return response()->json($data);
+        }
+
+        $result = $query->orderBy('id')
+            ->take(100)
+            ->get();
+
+        $data = [
+            'data' => $result,
+            'exito' => 200
+        ];
+
+        return response()->json($data);
+    }
+    public function BuscarId($id)
+    {
+        $Consultorio = Consultorio::find($id);
+
+        if (!$Consultorio) {
+            $data = [
+                'message' => 'Consultorio no encontrado',
+                'exito' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $data = [
+            'Consultorio' => $Consultorio,
+            'exito' => 200
+        ];
+
         return response()->json($data, 200);
     }
     public function Agregar(Request $request)
@@ -77,46 +141,6 @@ class ConsultorioController extends Controller
 
         return response()->json($data, 201);
     }
-    public function BuscarId($id)
-    {
-        $Consultorio = Consultorio::find($id);
-
-        if (!$Consultorio) {
-            $data = [
-                'message' => 'Consultorio no encontrado',
-                'status' => 404
-            ];
-            return response()->json($data, 404);
-        }
-
-        $data = [
-            'Consultorio' => $Consultorio,
-            'status' => 200
-        ];
-
-        return response()->json($data, 200);
-    }
-    public function Eliminar($id)
-    {
-        $Consultorio = Consultorio::find($id);
-
-        if (!$Consultorio) {
-            $data = [
-                'message' => 'Consultorio no encontrado',
-                'status' => 404
-            ];
-            return response()->json($data, 404);
-        }
-
-        $Consultorio->delete();
-
-        $data = [
-            'message' => 'Consultorio eliminada',
-            'status' => 200
-        ];
-
-        return response()->json($data, 200);
-    }
     public function Editar(Request $request, $id)
     {
         $Consultorio = Consultorio::find($id);
@@ -124,7 +148,7 @@ class ConsultorioController extends Controller
         if (!$Consultorio) {
             $data = [
                 'message' => 'Consultorio no encontrado',
-                'status' => 404
+                'exito' => 404
             ];
             return response()->json($data, 404);
         }
@@ -176,9 +200,9 @@ class ConsultorioController extends Controller
 
         return response()->json($data, 200);
     }
-    public function EditarParcial(Request $request, $id)
+    public function EditarParcial(Request $request)
     {
-        $Consultorio = Consultorio::find($id);
+        $Consultorio = Consultorio::find($request->id);
 
         if (!$Consultorio) {
             $data = [
@@ -186,7 +210,7 @@ class ConsultorioController extends Controller
                 'message' => 'Consultorio no encontrado',
                 'exito' => 404
             ];
-            return response()->json($data, 404);
+            return response()->json($data);
         }
 
         $validator = Validator::make($request->all(), [
@@ -208,9 +232,9 @@ class ConsultorioController extends Controller
             $data = [
                 'message' => 'Error en la validación de los datos',
                 'errors' => $validator->errors(),
-                'status' => 400
+                'exito' => 400
             ];
-            return response()->json($data, 400);
+            return response()->json($data);
         }
 
         if ($request->has('Nombre')) {
@@ -263,7 +287,29 @@ class ConsultorioController extends Controller
         $data = [
             'message' => 'Estudiante actualizado',
             'Consultorio' => $Consultorio,
-            'status' => 200
+            'exito' => 200
+        ];
+
+        return response()->json($data);
+    }
+    
+    public function Eliminar($id)
+    {
+        $Consultorio = Consultorio::find($id);
+
+        if (!$Consultorio) {
+            $data = [
+                'message' => 'Consultorio no encontrado',
+                'exito' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $Consultorio->delete();
+
+        $data = [
+            'message' => 'Consultorio eliminada',
+            'exito' => 200
         ];
 
         return response()->json($data, 200);

@@ -8,15 +8,42 @@ use Illuminate\Support\Facades\Validator;
 
 class MedicoController
 {
-    public function ListarMedicos()
+    public function ListarMedicos($codigo, $rango)
     {
-        $Medicos = Medico::all();
+        $q = Medico::join('persona', 'medico.persona_id', '=', 'persona.id')
+            ->join('consultorio', 'medico.consultorio_id', '=', 'consultorio.id')
+            ->select(
+                'medico.id',
+                'medico.Especialidad',
+                'medico.Subespecialidad',
+                'medico.NumeroCarnet',
+                'persona.Identificacion',
+                'persona.Nombres',
+                'persona.Apellidos',
+                'persona.Genero',
+                'persona.Telefono',
+                'persona.Correo',
+                'persona.FechaNacimiento',
+                'persona.Estado',
+                'consultorio.Nombre',
+                'consultorio.Ruc',
+                'consultorio.NombreComercial',
+                'consultorio.Direccion',
+                'consultorio.Telefono',
+                'consultorio.DireccionMatriz',
+                'consultorio.Estado',
+            )
+            ->orderBy('id', 'desc')
+            ->skip($codigo)
+            ->take($rango)
+            ->get();
+
         $data = [
-            'data' => $Medicos,
+            'data' => $q,
             'message' => 'Exito',
             'exito' => 200
         ];
-        return response()->json($data, 200);
+        return response()->json($data);
     }
     public function Agregar(Request $request)
     {
@@ -147,9 +174,9 @@ class MedicoController
 
         return response()->json($data, 200);
     }
-    public function EditarParcial(Request $request, $id)
+    public function EditarParcial(Request $request)
     {
-        $Medico = Medico::find($id);
+        $Medico = Medico::find($request->id);
 
         if (!$Medico) {
             $data = [
